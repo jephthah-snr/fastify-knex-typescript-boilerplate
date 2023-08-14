@@ -16,9 +16,11 @@
     "target": "es6",
     "sourceMap": true,
     "paths": {
-      "@config/*": ["src/config/*"],
+      "@*": ["src/*"],
       "@shared/*": ["src/shared/*"],
-      "@utils/*": ["src/shared/utils/*"]
+      "@database/*": ["src/v1/database/*"],
+      "@modules/*": ["src/v1/modules/*"],
+      "@v1/*": ["src/v1/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json"],

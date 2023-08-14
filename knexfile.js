@@ -1,25 +1,32 @@
+// Update with your config settings.
+
+/**
+ * @type { Object.<string, import("knex").Knex.Config> }
+ */
+
+const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 module.exports = {
-  client: 'postgresql',
-  connection: {
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    ssl: {
-      rejectUnauthorized: false,
+  development: {
+    client: "postgresql",
+    connection: {
+      host: DB_HOST,
+      port: DB_PORT,
+      user: DB_USER,
+      password: DB_PASSWORD,
+      database: DB_NAME,
     },
-  },
-  pool: {
-    min: 2,
-    max: 10,
-  },
-  migrations: {
-    directory: 'src/database/migrations',
-    tableName: 'migrations',
-  },
-  seeds: {
-    directory: 'src/database/seeds',
+    propagateCreateError: false,
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: "knex_migrations",
+      directory: "./src/v1/database/migrations",
+    },
+    seeds: {
+      directory: "./src/v1/database/seeds",
+    },
   },
 };
